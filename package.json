@@ -4,7 +4,8 @@
   "description": "getir case study",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+     "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,11 @@
   "homepage": "https://gitlab.com/ceyonur/bring-it-on#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.1"
+    "mongodb": "^3.5.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
