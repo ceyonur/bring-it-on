@@ -15,8 +15,8 @@ exports.bring = (req, res) => {
   var matching = {
     createdAt: { $gte: new Date(startDate), $lte: new Date(endDate) },
     totalCount: {
-      $gte: minCount,
-      $lte: maxCount
+      $gte: Number(minCount),
+      $lte: Number(maxCount)
     }
   }
   records.aggregate([ { $project: projection }, { $match: matching } ])
