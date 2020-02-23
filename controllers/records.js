@@ -1,10 +1,11 @@
-// get singleton connection class
-const { Connection } = require('../lib/connection.js')
+var mongoUtil = require('../util/mongo_util')
+const { ErrorEnum, BringError } = require('../util/error_handler')
+const HttpStatus = require('http-status-codes');
+const collectionName = "records";
 
 exports.bring = (req, res) => {
   let { startDate, endDate, minCount, maxCount} = req.body;
-  const records = Connection.client.db().collection('records');
-  console.log(req.body)
+  let records = mongoUtil.getDb().collection(collectionName);
   var projection = {
     _id: 0, key: 1, createdAt: 1,
     totalCount: {
@@ -18,22 +19,14 @@ exports.bring = (req, res) => {
       $lte: maxCount
     }
   }
-  records.aggregate([ { $project: projection }, { $match: matching } ]).sort({createdAt: 1})
+  records.aggregate([ { $project: projection }, { $match: matching } ])
+    .sort({createdAt: 1})
     .toArray(function(err, docs){
       if (err){
-        return res.send({
-          code: 1,
-          msg: err.toString()
-        });
-      }
-      if(docs.length == 0) {
-        return res.send({
-          code: 2,
-          msg: "Record not found"
-        });
+        throw new BringError(HttpStatus.OK, ErrorEnum.DB_ERROR, err)
       }
       res.send({
-        code: 0,
+        code: ErrorEnum.SUCCESS,
         msg: "Success",
         records: docs
       });
