@@ -12,6 +12,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 // parse requests of content-type - application/json
 app.use(bodyParser.json())
 
+// serve doc files
+app.use('/docs', express.static('doc'))
+
+//get our routes
+require('./routes/records.js')(app);
+
 // define a simple route
 app.post('/', (req, res) => {
   res.json({code:0, msg: "Success", result:"Hello World!"});
@@ -25,8 +31,14 @@ app.get('*', (req, res) => {
   });
 });
 
-//get our routes
-require('./routes/records.js')(app);
+// default 404 for posts
+app.post('*', (req, res) => {
+  res.status(HttpStatus.NOT_FOUND).json({
+    code: HttpStatus.NOT_FOUND,
+    msg: "No route available."
+  });
+});
+
 
 //direct our custom errors in case of thrown error
 app.use((err, req, res, next) => {
