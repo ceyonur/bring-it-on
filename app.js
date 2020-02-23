@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 // serve doc files
-app.use('/docs', express.static('doc'))
+app.use('/doc', express.static('doc'))
 
 //get our routes
 require('./routes/records.js')(app);

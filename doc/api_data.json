@@ -11,6 +11,20 @@
         "Parameter": [
           {
             "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "startDate",
+            "description": "<p>Records created after.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "endDate",
+            "description": "<p>Records created before.</p>"
+          },
+          {
+            "group": "Parameter",
             "type": "Number",
             "optional": false,
             "field": "minCount",
@@ -22,20 +36,6 @@
             "optional": false,
             "field": "maxCount",
             "description": "<p>Records with maximum sum counts.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "startDate",
-            "description": "<p>Records created after.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "endDate",
-            "description": "<p>Records created before.</p>"
           }
         ]
       },
