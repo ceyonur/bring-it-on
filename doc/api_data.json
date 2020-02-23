@@ -25,14 +25,14 @@
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "startDate",
             "description": "<p>Records created after.</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
             "optional": false,
             "field": "endDate",
             "description": "<p>Records created before.</p>"

@@ -12,8 +12,8 @@ module.exports = (app) => {
  *
  * @apiParam {Number} minCount Records with minimum sum counts.
  * @apiParam {Number} maxCount Records with maximum sum counts.
- * @apiParam {String} startDate Records created after.
- * @apiParam {String} endDate Records created before.
+ * @apiParam {Number} startDate Records created after.
+ * @apiParam {Number} endDate Records created before.
  * @apiParamExample {json} Request-Example:
  *    {
  *      "startDate": "2016-01-26",
